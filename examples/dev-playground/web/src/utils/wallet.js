@@ -1,5 +1,3 @@
-import { Web3Provider } from '@ethersproject/providers'
-
 import { unlockBrowser } from './browser'
 import { unlockWalletConnect, isWalletConnect } from './walletConnect'
 

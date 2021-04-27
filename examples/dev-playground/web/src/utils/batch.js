@@ -1,5 +1,4 @@
 import SuperfluidSDK from '@superfluid-finance/js-sdk'
-import { Web3Provider } from '@ethersproject/providers'
 import { defaultAbiCoder } from '@ethersproject/abi'
 import toast from 'react-hot-toast'
 
