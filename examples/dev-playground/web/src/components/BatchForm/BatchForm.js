@@ -30,7 +30,6 @@ const BatchForm = (props) => {
           Token Address
         </Label>
         <TextField
-          readOnly
           defaultValue={props.tokenAddress}
           name="tokenAddress"
           className="rw-input"

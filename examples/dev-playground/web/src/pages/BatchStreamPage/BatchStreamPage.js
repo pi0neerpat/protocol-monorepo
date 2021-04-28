@@ -1,10 +1,10 @@
 import { Link, routes } from '@redwoodjs/router'
 import BatchStream from 'src/components/BatchStream'
 
-const BatchStreamPage = ({ token }) => {
+const BatchStreamPage = () => {
   return (
     <>
-      <BatchStream token={token} />
+      <BatchStream />
     </>
   )
 }

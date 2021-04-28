@@ -3,7 +3,7 @@ import { useAuth } from '@redwoodjs/auth'
 import { batchCall, BATCH_TRANSFER } from 'src/utils/batch'
 import toast from 'react-hot-toast'
 
-const BatchTransfer = ({ token }) => {
+const BatchTransfer = () => {
   const { currentUser } = useAuth()
 
   const [loading, setLoading] = React.useState(false)
@@ -20,11 +20,10 @@ const BatchTransfer = ({ token }) => {
       amounts.push(amount)
     })
     // toast.error('Something went wrong')
-    // token
     const { tx, error } = await batchCall({
       recipients,
       amounts,
-      tokenAddress: token,
+      tokenAddress: input.tokenAddress,
       type: BATCH_TRANSFER,
     })
 
@@ -58,11 +57,7 @@ const BatchTransfer = ({ token }) => {
           <h2 className="rw-heading rw-heading-secondary">Batch Transfer</h2>
         </header>
         <div className="rw-segment-main">
-          <BatchForm
-            tokenAddress={token}
-            onSave={batchTransfer}
-            loading={loading}
-          />
+          <BatchForm onSave={batchTransfer} loading={loading} />
         </div>
       </div>
     </>

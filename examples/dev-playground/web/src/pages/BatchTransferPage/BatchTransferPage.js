@@ -1,10 +1,10 @@
 import { Link, routes } from '@redwoodjs/router'
 import BatchTransfer from 'src/components/BatchTransfer'
 
-const BatchTransferPage = ({ token }) => {
+const BatchTransferPage = () => {
   return (
     <>
-      <BatchTransfer token={token} />
+      <BatchTransfer />
     </>
   )
 }

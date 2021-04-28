@@ -54,6 +54,8 @@ const DefaultLayout = ({ children }) => {
                 <img className="h-10" src="/favicon.png" />
               </Link>
             </div>
+            <Link to="/batchstream">Batch stream</Link>
+            <Link to="/batchtransfer">Batch transfer</Link>
             {loginButton}
           </div>
           {React.cloneElement(children, { useAuth })}
