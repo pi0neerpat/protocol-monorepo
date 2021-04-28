@@ -13,21 +13,13 @@ export const unlockBrowser = async ({ debug }) => {
       console.log('No web3 provider injected')
       return { hasWallet: false, isUnlocked: false }
     }
-    window.ethereum.autoRefreshOnNetworkChange = false
-
-    const walletAddress = await window.ethereum.request({
-      method: 'eth_requestAccounts',
-      params: [
-        {
-          eth_accounts: {},
-        },
-      ],
-    })
 
     const appsSdk = new SafeAppsSDK({
       whitelistedDomains: [/gnosis-safe\\.io/],
     })
     const safe = await appsSdk.getSafeInfo()
+    console.log('Safe info: ', JSON.stringify(safe))
+    const walletAddress = safe.safeAddress
     const walletProvider = new Web3Provider(new SafeAppProvider(safe, appsSdk))
 
     const network = await walletProvider.getNetwork()
