@@ -7,10 +7,12 @@
 
 [web]
   port = 8910
+  host = '0.0.0.0'
   apiProxyPath = "/api"
   includeEnvironmentVariables=['INFURA_ENDPOINT_KEY']
 [api]
   port = 8911
+  host = '0.0.0.0'
   schemaPath = "./api/db/schema.prisma"
 [browser]
   open = true

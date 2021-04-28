@@ -1,4 +1,6 @@
 import { Web3Provider } from '@ethersproject/providers'
+import SafeAppsSDK from '@gnosis.pm/safe-apps-sdk'
+import { SafeAppProvider } from '@gnosis.pm/safe-apps-provider'
 
 import { getErrorResponse } from './general'
 
@@ -8,6 +10,7 @@ export const isWeb3EnabledBrowser = () =>
 export const unlockBrowser = async ({ debug }) => {
   try {
     if (!isWeb3EnabledBrowser()) {
+      console.log('No web3 provider injected')
       return { hasWallet: false, isUnlocked: false }
     }
     window.ethereum.autoRefreshOnNetworkChange = false
@@ -21,7 +24,11 @@ export const unlockBrowser = async ({ debug }) => {
       ],
     })
 
-    const walletProvider = new Web3Provider(window.ethereum)
+    const appsSdk = new SafeAppsSDK({
+      whitelistedDomains: [/gnosis-safe\\.io/],
+    })
+    const safe = await appsSdk.getSafeInfo()
+    const walletProvider = new Web3Provider(new SafeAppProvider(safe, appsSdk))
 
     const network = await walletProvider.getNetwork()
     if (debug)

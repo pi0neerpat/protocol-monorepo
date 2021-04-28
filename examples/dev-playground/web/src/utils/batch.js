@@ -1,4 +1,5 @@
 import SuperfluidSDK from '@superfluid-finance/js-sdk'
+
 import { defaultAbiCoder } from '@ethersproject/abi'
 import toast from 'react-hot-toast'
 
@@ -22,7 +23,7 @@ export const batchCall = async ({
       debug: true,
       infuraId: process.env.INFURA_ENDPOINT_KEY,
     })
-    toast(`Your wallet is on chain ${network.chainId}`)
+    toast(`Your wallet is on chain ${network}`)
 
     const sf = new SuperfluidSDK.Framework({
       ethers: walletProvider,
