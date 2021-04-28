@@ -23,7 +23,7 @@ export const batchCall = async ({
       debug: true,
       infuraId: process.env.INFURA_ENDPOINT_KEY,
     })
-    toast(`Your wallet is on chain ${network}`)
+    toast(`Your wallet is on chain ${network.name}`)
 
     const sf = new SuperfluidSDK.Framework({
       ethers: walletProvider,

@@ -14,9 +14,7 @@ export const unlockBrowser = async ({ debug }) => {
       return { hasWallet: false, isUnlocked: false }
     }
 
-    const appsSdk = new SafeAppsSDK({
-      whitelistedDomains: [/gnosis-safe\\.io/],
-    })
+    const appsSdk = new SafeAppsSDK()
     const safe = await appsSdk.getSafeInfo()
     console.log('Safe info: ', JSON.stringify(safe))
     const walletAddress = safe.safeAddress
