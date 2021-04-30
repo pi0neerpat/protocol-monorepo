@@ -56,6 +56,24 @@ node zip-it.js
 # outputs to graphql.zip
 ```
 
+## Gnosis Safe App
+
+In order to test locally with Gnosis Safe Apps, you'll need to update CORS settings. Create the file `web/config/webpack.config.js` with the following contents. Restart the app to apply the changes.
+
+```
+module.exports = (config, { mode }) => {
+  config.devServer.headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET',
+    'Access-Control-Allow-Headers':
+      'X-Requested-With, content-type, Authorization',
+  }
+  return config
+}
+```
+
+NOTE: Don't commit this file to your production build- it will break your build. Also, be sure your app is served using host `localhost` and not `0.0.0.0`.
+
 ### Ngrok it
 
 ```bash
