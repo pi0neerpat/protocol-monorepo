@@ -31,7 +31,7 @@ export const unlockBrowser = async ({ debug }) => {
     return {
       hasWallet: true,
       isUnlocked: true,
-      walletAddress: walletAddress[0],
+      walletAddress: walletAddress,
       network,
       walletProvider,
     }
